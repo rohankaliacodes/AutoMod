@@ -1,0 +1,197 @@
+/* Contact2.css - Unique class names to avoid conflicts */
+
+
+:root {
+    /* You can keep or remove these variables if they conflict with others.
+       Consider renaming them if they do. */
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+      "Source Han Sans CN", sans-serif;
+    --highlight-color: #c81058; 
+    --text-color: #000;               /* Black text for form */
+    --background-dark: #fff;          /* White background on right side */
+    --input-bg-color: #faf9f6;        /* Light input background */
+    --border-color: #ccc;             /* Subtle borders for inputs */
+  }
+  
+  /* Main Container - two-column layout, left image + right form */
+  .contact2-main-container {
+    display: flex !important;
+    width: 100% !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important; /* Prevents scrollbars */
+    box-sizing: border-box !important;
+    background-color: var(--background-dark) !important; /* White background */
+    font-family: var(--default-font-family) !important;
+  }
+
+  .contact2-main-container .header-container *{
+
+    color: black !important;
+  }
+
+  .nav-item:hover {
+    color: #c81058 !important;
+  }
+
+  
+  /* Left half - image */
+  .contact2-image {
+    flex: 0 0 50% !important;
+    position: relative !important;
+    width: 50% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    background: url("../assets/contact.jpg") no-repeat center !important;
+    background-size: cover !important; 
+    display: block !important;
+  }
+  
+  /* Right half - form container */
+  .contact2-frame {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 2rem !important;
+    background-color: #fff !important;
+    width: 50% !important;
+  }
+  
+  /* Title / heading */
+  .contact2-send-us-message {
+    font-size: 2.5rem !important;
+    margin-bottom: 2rem !important;
+    text-align: center !important;
+    width: 100% !important;
+    color: #000 !important;  /* black text color */
+    font-weight: 700 !important; /* Bold font */
+    margin-top: 100px;
+  }
+  
+  /* Nested frames for layout structure */
+  .contact2-frame-1,
+  .contact2-frame-2,
+  .contact2-frame-3,
+  .contact2-frame-4,
+  .contact2-frame-5,
+  .contact2-frame-6,
+  .contact2-frame-7,
+  .contact2-frame-8,
+  .contact2-frame-9,
+  .contact2-frame-a,
+  .contact2-frame-b,
+  .contact2-frame-c,
+  .contact2-frame-d {
+    /* No special styling unless desired */
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  /* Label text */
+  .contact2-name,
+  .contact2-email,
+  .contact2-subject,
+  .contact2-message {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Inputs and textarea */
+  .contact2-frame-7,
+  .contact2-frame-9,
+  .contact2-frame-b,
+  .contact2-frame-d {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border: 1px solid rgba(204, 204, 204, 0.7);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: var(--input-bg-color);
+    color: var(--text-color);
+  }
+  
+  /* Textarea specifically */
+  .contact2-frame-d {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  /* Focus states */
+  .contact2-frame-7:focus,
+  .contact2-frame-9:focus,
+  .contact2-frame-b:focus,
+  .contact2-frame-d:focus {
+    outline: none;
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 5px rgba(200, 16, 86, 0.5);
+  }
+  
+  /* Send button */
+  .contact2-button-f {
+    width: 100% ;
+    padding: 1.2rem ;
+    font-size: 1.1rem ;
+    border-radius: 8px ;
+    cursor: pointer ;
+    margin-bottom: 0.5rem ;
+    position: relative ;
+    overflow: hidden ;
+    font-weight: 700 ;
+    color: #fff ;
+    background-color: #000;
+    border: none ;
+    transition: background-color 0.3s ease ;
+    z-index: 2;
+  }
+  
+  /* Hover effect overlay */
+  .contact2-button-f::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #c81056;
+    border-radius: 8px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: -1;
+    color: white;
+  }
+
+  .contact2-button-f button{
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .contact2-button-f:hover::before {
+    transform: translateY(0);
+  }
+  
+
+  /* If you wrap text in <span> inside button, keep it above overlay */
+  .contact2-button-f span {
+    position: relative;
+    z-index: 2;
+  }
+  

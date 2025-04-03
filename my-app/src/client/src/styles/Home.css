@@ -1,0 +1,251 @@
+.background {
+    background-image: url(../assets/backround.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.heading-find-cars {
+    color: #ffffff;
+    font-family: "DM Sans-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.home-info-tooltip{
+    background-color: #c81058; /* Highlight color for tooltip */
+    color: white;
+    border-radius: 100px; /* Circular shape */
+    width: 30px; /* Width of tooltip */
+    padding: 5px; /* Padding inside tooltip */
+}
+
+.heading-find-your {
+    color: white; /* Highlight color for main headings */
+    font-family: "DM Sans-Bold", Helvetica;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Responsive Headings */
+@media (max-width: 768px) {
+    .heading-find-your {
+        font-size: 28px;
+    }
+
+    .heading-find-cars {
+        font-size: 16px;
+    }
+}
+
+.text-wrapper {
+    color: #ffffff;
+    font-family: "DM Sans-Regular", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* Categories */
+.categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Allow categories to wrap */
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.category-button {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white for buttons */
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* Pseudo-element overlay (pink) starts below the button */
+.category-button::before {
+    color: white;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #c81056; /* Pinkish overlay color */
+    border-radius: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: -1;              /* Keep it behind the button text */
+  }
+
+.category-button:hover::before{
+    transform: translateY(0);
+}
+
+.category-button:hover {
+
+    transform: scale(1.05);
+}
+
+/* Keep the button text above the overlay */
+.category-button span {
+    position: relative;
+    z-index: 2;
+  }
+
+/* Responsive Categories */
+@media (max-width: 768px) {
+    .category-button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+/* Form Section */
+.form {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+/* Responsive Form */
+@media (max-width: 768px) {
+    .form {
+        width: 95%;
+        padding: 10px;
+    }
+}
+
+/* Dropdowns */
+.dropdowns {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensure dropdowns stack on smaller screens */
+}
+
+.dropdown {
+    flex: 1;
+    min-width: 120px;
+    padding: 5px 10px;
+    border: 1px solid #e9e9e9;
+    border-radius: 10px;
+}
+
+/* Responsive Dropdowns */
+@media (max-width: 768px) {
+    .dropdown {
+        min-width: 100%;
+    }
+}
+
+/* Button */
+.button {
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+    background-color: #c81058; /* Highlight color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+}
+
+/* Responsive Button */
+@media (max-width: 768px) {
+    .button {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+/* AI Mechanic Section */
+.ai-mechanic-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ai-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/* Responsive AI Section */
+@media (max-width: 768px) {
+    .ai-mechanic-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ai-input {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+/* Submit Button */
+.ai-submit-button {
+    background-color: #4CAF50; /* Kept original green for contrast */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ai-submit-button:hover {
+    background-color: #45a049;
+}
+
+.custom-button {
+    background-color: black; /* Highlight color for button */
+    color: white; /* Text color */
+    padding: 8px 16px; /* Smaller padding for a more compact button */
+    font-size: 14px; /* Smaller font size */
+    font-weight: bold; /* Bold font weight for readability */
+    border: none; /* No border */
+    border-radius: 5px; /* Slight rounding of corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    outline: none; /* Remove outline */
+    margin: 5px; /* Margin for spacing */
+    width: auto; /* Auto width based on content size */
+    display: inline-block; /* Allows setting width and center alignment */
+    text-align: center; /* Center text inside button */
+}
+
+.custom-button:hover {
+    background-color: #c81056; /* Lighter shade for hover effect */
+}
+
+.custom-button:disabled {
+    background-color: #cccccc; /* Greyed out button when disabled */
+    color: #666666; /* Darker text color for disabled state */
+    cursor: not-allowed; /* Cursor to indicate button is disabled */
+    box-shadow: none; /* No shadow when disabled */
+}

@@ -1,0 +1,64 @@
+.car-view-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex; /* Enable flexbox for layout control */
+}
+
+.canvas-container {
+  flex: 1; /* Canvas takes up the remaining space */
+  height: 100%;
+  pointer-events: auto;
+  position: relative;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.add-button {
+  position: absolute;
+  right: 20px;
+  padding: 8px 16px;
+  bottom: 20px;
+  font-size: 2px;
+  font-weight: bold;
+  background-color: rgba(20, 20, 20, 0.8); 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000; /* Ensure it's on top */
+}
+
+.add-garage-icon {
+  width: 24px; /* Adjust as needed */
+  height: 24px;
+  filter: brightness(0) invert(1); /* Makes it white on dark backgrounds */
+}
+
+.add-button:hover {
+  background-color: #c81058;
+  transform: scale(1.1);
+}
+
+.add-garage-message {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #c81058;
+  z-index: 1000;
+}

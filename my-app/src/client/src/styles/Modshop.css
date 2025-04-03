@@ -1,0 +1,420 @@
+:root {
+    --primary-bg: #101010;
+    --search-bg: #ffffff;
+    --search-button-bg: #c81058;
+    --text-color: #000000;
+    --category-bg: #c81058;
+    --category-text: #ffffff;
+    --border-radius: 50px;
+    --font-family: "DM Sans", sans-serif;
+  }
+  
+  /* =========================
+     MAIN LAYOUT + HEADER
+     ========================= */
+  .main-container {
+    width: 100%;
+    height: 100vh;
+    background: var(--primary-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    overflow: hidden; /* If you need page scrolling, remove this line */
+  }
+  
+  .header {
+    width: 100%;
+    height: 100px;
+    background: #000;
+  }
+  
+  /* =========================
+     SEARCH AREA
+     ========================= */
+     .search-container {
+      width: 90%;
+      max-width: 1350px;
+      min-width: 300px;
+      display: flex;
+      align-items: center;
+      background: var(--search-bg);
+      border-radius: var(--border-radius);
+      padding: 10px;
+      margin-top: 100px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: transparent;
+    max-width: 300px;
+  }
+  
+  .dropdown-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  .price-label{
+    color: white;
+    left: 35%;
+    position: relative;
+  }
+
+
+  .price-slider{
+    margin-top: 20px;
+    color: #c81058;
+  }
+
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #c81058;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #c81058;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .slider::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    background: #c81058; /* Change this to your desired color */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  
+  .range-slider{
+    color: white;
+    position: relative;
+    left: 35%;
+  }
+
+  
+  .dropdown {
+    padding: 8px 12px;
+    font-size: 16px;
+    font-family: var(--font-family);
+    border: none;
+    max-width: 150px;
+    border-radius: 8px;
+    background: #f0f0f0;
+  }
+  
+  .search-button {
+    background: var(--search-button-bg);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 15px;
+    font-family: var(--font-family);
+  }
+  
+  .search-icon {
+    font-size: 18px;
+  }
+  
+  /* =========================
+     CATEGORY CHIPS
+     ========================= */
+  .category-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .category {
+    background: var(--category-bg);
+    color: var(--category-text);
+    font-size: 14px;
+    font-family: var(--font-family);
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .category:hover {
+    background: #a80e4c;
+    transform: translateY(-2px);
+  }
+  
+  .category.all {
+    font-weight: bold;
+  }
+  
+  /* =========================
+     MAIN CONTENT LAYOUT
+     ========================= */
+  .modshop-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+    gap: 20px;
+    padding: 0 20px; /* Optional side padding */
+    overflow: auto;
+  }
+  
+  /* =========================
+     SEARCH RESULTS (LEFT)
+     ========================= */
+  .cards-scroll-container {
+    flex: 2; /* Takes more space than the recommendations on the right */
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 65px;
+    width: 100%;
+    font-family: var(--font-family);
+    overflow-y: hidden; /* Optional: hide scrollbar */
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cards-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* =========================
+     RECOMMENDATIONS (RIGHT)
+     ========================= */
+  .recommendations-container {
+    flex: 1;               /* Takes less space than the parts section */
+    max-height: 60vh;
+    overflow: auto;
+    padding: 20px;
+    background: none;      /* Remove dark background */
+    border-radius: 0;      /* Remove extra rounding */
+    box-shadow: none;      /* Remove extra shadow */
+    font-family: var(--font-family);
+    position: relative;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .recommendations-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Header inside recommendations */
+  .rec-header {
+    top: 0;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #fff; /* If your main container is dark, you can keep it white */
+    text-align: left;
+    position: sticky;
+    z-index: 10;
+    font-family: "DM sans", sans-serif;
+  }
+  
+  /* The list container for recommended items */
+  .recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: var(--font-family);
+  }
+  
+  /* Each recommended part card — match search-result card styling */
+  .recommendations-list .part-item {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 16px;
+    color: #333;
+    font-family: var(--font-family);
+  }
+  
+  .recommendations-list .part-item:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+  
+  .recommendations-list .part-item p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #666;
+    font-family: var(--font-family);
+  }
+  
+  .recommendations-list .part-item p strong {
+    color: #333;
+    font-family: var(--font-family);
+  }
+  
+  /* "Buy Now" button pinned at bottom-right */
+  .recommendations-list .part-item a {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #c81058;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-family: var(--font-family);
+  }
+  
+  .recommendations-list .part-item a:hover {
+    background-color: #a80e4c;
+  }
+  
+  .recommendations-list .part-item a::after {
+    content: "→";
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+    font-family: var(--font-family);
+  }
+  
+  .recommendations-list .part-item a:hover::after {
+    transform: translateX(4px);
+  }
+  
+/***********************************
+  PRICE SLIDER UI (unique classes)
+************************************/
+.modshop-slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center horizontally */
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px; /* space below category buttons */
+  }
+  
+  .modshop-slider-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 185px; /* same as the original slider example */
+  }
+  
+  .modshop-slider-label-left {
+    font-size: 16px;
+    color: white;
+    font-family: var(--font-family);
+  }
+  
+  .modshop-slider-output {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 40px; /* enough space for $$$ text */
+    justify-content: flex-end;
+  }
+  
+  .modshop-slider-label-right {
+    font-size: 14px;
+    color: white;
+    font-family: var(--font-family);
+  }
+  
+  .modshop-slider-value {
+    font-size: 14px;
+    color: #1e1e1e;
+    font-family: var(--font-family);
+    margin-left: 4px; /* small spacing if you want a dynamic number */
+  }
+  
+  /* The horizontal slider track container */
+  .modshop-slider-block-wrapper {
+    width: 185px; /* matches the row width */
+    display: flex;
+    align-items: center;
+  }
+  
+  /* The background track */
+  .modshop-slider-block {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    height: 8px;
+    background: #e6e6e6;
+    border-radius: 9999px;
+    position: relative;
+  }
+  
+  /* Left knob */
+  .modshop-slider-knob-start {
+    width: 16px;
+    height: 16px;
+    background: #c81058;
+    border-radius: 9999px;
+    position: relative;
+    z-index: 7;
+  }
+  
+  /* The fill portion between knobs */
+  .modshop-slider-track {
+    flex-grow: 1;
+    height: 6px;
+    background: none; /* We can color it if you want */
+    margin: 0 2px;
+    z-index: 8;
+  }
+  
+  /* Right knob */
+  .modshop-slider-knob-end {
+    width: 16px;
+    height: 16px;
+    background: #c81058;
+    border-radius: 9999px;
+    position: relative;
+    z-index: 7;
+  }
+  
+  /* Filter label below */
+  .modshop-slider-filter-label {
+    font-size: 16px;
+    color: #757575;
+    font-family: var(--font-family);
+  }

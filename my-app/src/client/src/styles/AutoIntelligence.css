@@ -1,0 +1,761 @@
+
+.chat-box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 600px;
+    height: 1100px;
+    max-height: 80vh;
+    background-color: rgba(20, 20, 20, 0.8);
+    color: #f0f0f0;
+    border-radius: 10px;
+    overflow: auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    z-index: 1001;
+    border: none;
+    font-family: monospace;
+    font-size: 0.95em;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.chat-box.pinned {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.messages-area {
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: #444 #222;
+}
+
+.messages-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+    border: 2px solid #111;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+.message {
+    padding: 6px 10px;
+    border-radius: 0;
+    margin-bottom: 4px;
+    max-width: 95%;
+    font-size: 0.9em;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add styles for markdown elements inside messages */
+.message ul, .message ol {
+    margin-left: 20px;
+    padding-left: 15px;
+}
+
+.message li {
+    margin-bottom: 5px;
+}
+
+.message strong, .message b {
+    font-weight: bold;
+}
+
+.message em, .message i {
+    font-style: italic;
+}
+
+.message h1, .message h2, .message h3, .message h4 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.message p {
+    margin-bottom: 10px;
+}
+
+.message code {
+    font-family: monospace;
+    background-color: rgba(50, 50, 50, 0.5);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.message.received {
+    background-color: transparent;
+    color: #eee;
+    align-self: flex-start;
+    margin-left: 10px;
+}
+
+.message.sent {
+    background-color: #444;
+    color: #eee;
+    align-self: flex-end;
+    text-align: left;
+    margin-right: 10px;
+    border-radius: 20px;
+    padding: 10px 15px;
+    word-wrap: break-word;
+}
+
+.input-area {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: none;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.input-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.message-input {
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 0.9em;
+    font-family: monospace;
+    outline: none;
+    margin-bottom: 0;
+    resize: vertical;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    height: auto;
+    min-height: 30px;
+    max-height: 150px;
+    width: 90%;
+    box-sizing: border-box;
+    margin-right: 0;
+}
+
+.message-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.send-button {
+    background: #c81058;
+    border-radius: 100%;
+    border: transparent;
+    color: white;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: opacity 0.2s ease;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.send-button:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #c81058);
+}
+
+.options-bar {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    background-color: transparent;
+    color: #f0f0f0;
+    border-radius: inherit;
+    
+}
+
+.option-name {
+    color: #bebebe;
+    font-size: 1.1em;
+    white-space: nowrap;
+    font-weight: 600;
+    margin-right: 15px; /* Add margin to separate from icons */
+}
+
+.reset-chat {
+    background-color: transparent;
+    border: transparent;
+    display: flex;
+    width: 33px;
+    height: 33px;
+    cursor: pointer;
+    margin-right: 15px; /* Keep spacing from other icons */
+}
+
+.reset-chat:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 1px #bebebe);
+}
+
+.option-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.option-icon {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Hover effect for ALL option icons (including upload) */
+.option-icon:hover {
+    opacity: 1;
+     filter: drop-shadow(0 0 1px #bebebe); /* Consistent hover effect */
+}
+
+/* Style for selected icons */
+.option-icon.selected-icon {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #c81058);
+    transform: scale(1.1);
+}
+
+
+
+.upload-button {
+    background-color: transparent; /* Remove default button background */
+    border: none;              /* Remove default button border */
+    cursor: pointer;           /* Change cursor on hover */
+    padding: 0;                /* Remove default padding */
+    display: flex;              /* Use flexbox for centering */
+    align-items: center;        /* Center vertically */
+    justify-content: center;    /* Center horizontally */
+    margin-left: auto;
+    right:0px
+}
+
+
+.options-and-send {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.sources {
+    margin-top: 5px;
+    font-size: 1em;
+    color: #aaa;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.sources a {
+    color: #88c0d0;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.sources a:not(:last-child)::after {
+    content: ',';
+    margin-right: 0.25em;
+}
+
+.sources a:hover {
+    text-decoration: underline;
+}
+
+.source-link {
+    background-color: transparent;
+    border: none;
+    color: #88c0d0;
+    cursor: pointer;
+    padding: 0 2px;
+    font-size: 1em;
+    text-decoration: none;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+}
+
+.segment-text {
+    white-space: pre-wrap;
+}
+
+.graph-container {
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.graph-container h3 {
+    color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+.recommendations-list button {
+    background: #444;
+    color: #eee;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.recommendations-list button:hover {
+    background: #666;
+}
+
+.close-button {
+    position: absolute;
+    padding: 8px 16px;
+    bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #c81058; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    bottom: 15px;
+    right: 60px;
+    z-index: 1000; /* Ensure it's on top */
+  }
+  
+  .close-button:hover {
+    background-color: #c81058;
+    transform: scale(1.05);
+  }
+  
+  .close-garage-message {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #c81058;
+    z-index: 1000;
+  }
+  .graph-container {
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.graph-container h3 {
+    color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+.recommendations-list button {
+    background: #444;
+    color: #eee;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.recommendations-list button:hover {
+    background: #666;
+}
+
+.close-button {
+    position: absolute;
+    padding: 8px 16px;
+    bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #c81058; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it's on top */
+  }
+  
+  .close-button:hover {
+    background-color: #c81058;
+    transform: scale(1.05);
+  }
+  
+  .close-garage-message {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #c81058;
+    z-index: 1000;
+  }
+  .chat-box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 600px;
+    height: 1100px;
+    max-height: 80vh;
+    background-color: rgba(20, 20, 20, 0.8);
+    color: #f0f0f0;
+    border-radius: 10px;
+    overflow: auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    z-index: 1001;
+    border: none;
+    font-family: monospace;
+    font-size: 0.95em;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.chat-box.pinned {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.messages-area {
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: #444 #222;
+}
+
+.messages-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+    border: 2px solid #111;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+.message {
+    padding: 6px 10px;
+    border-radius: 0;
+    margin-bottom: 4px;
+    max-width: 95%;
+    font-size: 0.9em;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add styles for markdown elements inside messages */
+.message ul, .message ol {
+    margin-left: 20px;
+    padding-left: 15px;
+}
+
+.message li {
+    margin-bottom: 5px;
+}
+
+.message strong, .message b {
+    font-weight: bold;
+}
+
+.message em, .message i {
+    font-style: italic;
+}
+
+.message h1, .message h2, .message h3, .message h4 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.message p {
+    margin-bottom: 10px;
+}
+
+.message code {
+    font-family: monospace;
+    background-color: rgba(50, 50, 50, 0.5);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.message.received {
+    background-color: transparent;
+    color: #eee;
+    align-self: flex-start;
+    margin-left: 10px;
+}
+
+.message.sent {
+    background-color: #444;
+    color: #eee;
+    align-self: flex-end;
+    text-align: left;
+    margin-right: 10px;
+    border-radius: 20px;
+    padding: 10px 15px;
+    word-wrap: break-word;
+}
+
+.input-area {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: none;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.input-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.message-input {
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 0.9em;
+    font-family: monospace;
+    outline: none;
+    margin-bottom: 0;
+    resize: vertical;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    height: auto;
+    min-height: 30px;
+    max-height: 150px;
+    width: 90%;
+    box-sizing: border-box;
+    margin-right: 0;
+}
+
+.message-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.send-button {
+    background: #c81058;
+    border-radius: 100%;
+    border: transparent;
+    color: white;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: opacity 0.2s ease;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.send-button:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #c81058);
+}
+
+.options-bar {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 8px;
+    background-color: transparent;
+    color: #f0f0f0;
+    border-radius: inherit;
+    justify-content: space-between;
+}
+
+.options-bar-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.option-name {
+    color: #bebebe;
+    font-size: 1.1em;
+    white-space: nowrap;
+    font-weight: 600;
+    margin-right: 10px; /* Add margin to separate from icons */
+}
+
+.reset-chat {
+    background-color: transparent;
+    border: transparent;
+    display: flex;
+    width: 33px;
+    height: 33px;
+    cursor: hand;
+    margin-right: 15px; /* Keep spacing from other icons */
+}
+
+.reset-chat:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 1px #bebebe);
+}
+
+.option-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.option-icon {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Hover effect for ALL option icons (including upload) */
+.option-icon:hover {
+    opacity: 1;
+     filter: drop-shadow(0 0 1px #bebebe); /* Consistent hover effect */
+} /* Consistent hover effect */
+
+/* Style for selected icons */
+.option-icon.selected-icon {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #c81058);
+    transform: scale(1.1);
+}
+
+
+.upload-button {
+    margin-right: 60px;
+   
+}
+.graph-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Add some spacing between header and chart */
+}
+
+.graph-header h3 {
+    margin: 0; /* Remove default h3 margins */
+}
+
+.graph-close-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s ease; /* Smooth transition for opacity */
+}
+
+/* Hover effect for the close button */
+.graph-close-button:hover {
+    opacity: 0.7; /* Reduce opacity on hover */
+    /* Optional: Add a slight scale transform for a "pop" effect */
+    transform: scale(1.1);
+}
+
+/* Style the image within the button (optional, but good for consistency) */
+.graph-close-button img {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.2s ease; /* Add transition for filter */
+}
+
+/* Hover effect for the image inside the button */
+.graph-close-button:hover img {
+    filter: drop-shadow(0 0 2px #ffffff); /* Add a glow effect */
+}
+
+
+/* Ensure graph container is relatively positioned */
+.graph-container {
+    position: relative; /* Important for absolute positioning if ever needed */
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: center;
+}
