@@ -1,35 +1,62 @@
-# Automod_4450
-
 🚗 AutoMod – Intelligent Car Modification Advisor
-AutoMod is a smart web application designed to assist car enthusiasts and owners in customizing their vehicles with confidence. It provides tailored modification recommendations, performance comparisons, and interactive visual tools to simplify and enhance the car modding experience.
+
+AutoMod is an AI-powered web application designed to help car enthusiasts and owners customize their vehicles with confidence. It delivers personalized modification recommendations, performance comparisons, and interactive visualization tools to simplify and enhance the car modification experience.
 
 🛠️ Tech Stack
+
 Frontend: React, Three.js, Tailwind CSS, Markdown-It
 
 Backend: Node.js, Express, OpenAI API, Gemini API
 
-Authentication: Firebase Auth
+Authentication: Firebase Authentication
 
-Database: (MongoDB / Firebase Firestore)
+Database: MongoDB / Firebase Firestore
 
-Visualization: Recharts for data insights, Three.js for 3D model rendering
+Visualization: Recharts, Three.js
 
-APIs & AI: OpenAI GPT-4o, Gemini LLM (for AI-generated modification suggestions)
+AI & Machine Learning: OpenAI GPT-4o, Google Gemini, fine-tuned automotive AI models trained on publicly available vehicle datasets for enhanced vehicle-specific recommendations
+
+⸻
 
 🎯 Key Features
-🔧 AI-Powered Recommendations: Get 5 personalized car modification suggestions (Performance, Aesthetic, or Functional) based on your car's specs and goals.
 
-📊 Before vs After Visual Comparison: Interactive charts show stat changes (e.g., HP, Torque, Lumens) before and after mods.
+🔧 AI-Powered Modification Recommendations
 
-🧠 Chat-Style Interface: Talk to "Auto Intelligence" for real-time, conversational guidance on modding, and help with figuring out issues with your vehicle.
+Receive five personalized modification suggestions across Performance, Aesthetic, and Functional categories based on your vehicle’s specifications, driving goals, and budget.
 
-🔍 Garage Tracker (WIP): Add and manage your custom builds in your virtual garage.
+📊 Before vs. After Performance Comparison
 
-🧰 3D Model Viewer (Experimental): Render your car or visualize modifications in 3D using Three.js.
+Interactive charts visualize projected improvements such as horsepower, torque, acceleration, fuel efficiency, lighting output, and other relevant metrics before and after modifications.
+
+🧠 AI Automotive Assistant
+
+Chat with Auto Intelligence, an AI assistant capable of providing real-time guidance on vehicle modifications, troubleshooting mechanical issues, explaining compatibility, and answering general automotive questions.
+
+🚗 Garage Tracker (Work in Progress)
+
+Build and manage your personal virtual garage by saving vehicles, tracking installed modifications, and planning future upgrades.
+
+🧰 3D Vehicle Viewer (Experimental)
+
+Visualize supported vehicles and selected modifications using interactive 3D models powered by Three.js.
+
+⸻
 
 🔍 Focus Areas
-Machine Learning + Prompt Engineering: Leveraging LLMs to generate contextual, structured, JSON-based recommendations.
 
-Automotive Intelligence: Focused on supported car trims from brands like Toyota, Honda, and BMW (2020–2023).
+🤖 AI, Machine Learning & Prompt Engineering
 
-User-Centric Design: Emphasis on real-world usability, intuitive UI, and accessible visual data.
+* Structured for consistent JSON-based AI responses.
+* Integration of multiple LLMs (OpenAI GPT-4o and Google Gemini) for contextual automotive recommendations.
+* Fine-tuned automotive AI models trained on available vehicle datasets to improve recommendation accuracy, compatibility validation, and vehicle-specific knowledge.
+
+🚘 Automotive Intelligence
+
+* Supports popular trims from manufacturers including Toyota, Honda, and BMW (2020–2023).
+* Considers vehicle specifications, compatibility, performance goals, and real-world modification data when generating recommendations.
+
+🎨 User-Centric Design
+
+* Clean, responsive interface focused on usability.
+* Interactive data visualizations to help users understand modification impacts.
+* Designed to make vehicle customization accessible for both beginners and experienced enthusiasts.
